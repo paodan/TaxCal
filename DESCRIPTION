@@ -1,0 +1,11 @@
+Package: TaxCal
+Type: Package
+Title: Calculate Chinese tax.
+Version: 1.0.0
+Author: Weiyang Tao
+Maintainer: Weiyang Tao <weiyangtao1513@gmail.com>
+Description: Calculate Chinese tax and net salary.
+License: GPL (>= 3)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
