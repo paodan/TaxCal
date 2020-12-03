@@ -60,7 +60,7 @@ taxNet = function(salary,
     x = seq(60000, by = 120, to = max(salary))
     plot(x, tax(x), type = "l", xlim = c(50000, max(salary)*1.1))
     abline(v = rev(60+ c(    0,  36, 144,  300, 420,  660, 960)) * 10^3)
-    abline(h = bin * rate - plus)
+    abline(h = bin_rev * rate_rev - plus)
     text(x = salary, y = tax0, labels = salary - tax0)
   }
   return(list(salary = salary, tax = tax0, net = salary - tax0))
