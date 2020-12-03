@@ -2,15 +2,19 @@
 #' Calculate the tax by providing annual gross salary
 #' #' @param salary annual salary in RMB.
 #' @param bin the bins for taxing.
-#' @param bin the rate for each taxing bin.
+#' The default is c(0, 36,000, 144,000, 300,000, 420,000, 660,000, 960,000).
+#' @param rate the rate for each taxing bin.
+#' The default is c(0.03, 0.1, 0.2, 0.25, 0.3, 0.35, 0.45).
 #' @return The tax you should pay.
 #' @export
 #' @examples
 #' tax(100000)
 #' tax(c(100000, 200000, 250000, 270000, 300000))
 tax = function(salary,
-               bin = rev(c(    0,  36, 144,  300, 420,  660, 960)) * 10^3,
-               rate = rev(c(0.03, 0.1, 0.2, 0.25, 0.3, 0.35, 0.45))){
+               bin = c(    0,  36, 144,  300, 420,  660, 960) * 10^3,
+               rate = c(0.03, 0.1, 0.2, 0.25, 0.3, 0.35, 0.45)){
+  bin = rev(bin)
+  rate = rev(rate)
 
   # Quick deduction
   plus = rev(-cumsum(rev(bin)*rev(c(diff(rate), 0))))
@@ -34,7 +38,9 @@ tax = function(salary,
 #' Calculate the tax and net salary by providing anual gross salary
 #' @param salary annual gross salary in RMB.
 #' @param bin the bins for taxing.
-#' @param bin the rate for each taxing bin.
+#' The default is c(0, 36,000, 144,000, 300,000, 420,000, 660,000, 960,000).
+#' @param rate the rate for each taxing bin.
+#' The default is c(0.03, 0.1, 0.2, 0.25, 0.3, 0.35, 0.45).
 #' @return a list, including annual gross salary, the tax you should pay, and the net anual salary.
 #' And make a plot, projecting the net salary on the curve.
 #' @export
@@ -42,8 +48,11 @@ tax = function(salary,
 #' taxNet(100000)
 #' taxNet(c(100000, 200000, 250000, 270000, 300000))
 taxNet = function(salary,
-                  bin = rev(c(    0,  36, 144,  300, 420,  660, 960)) * 10^3,
-                  rate = rev(c(0.03, 0.1, 0.2, 0.25, 0.3, 0.35, 0.45))){
+                  bin = c(    0,  36, 144,  300, 420,  660, 960) * 10^3,
+                  rate = c(0.03, 0.1, 0.2, 0.25, 0.3, 0.35, 0.45)){
+
+  bin = rev(bin)
+  rate = rev(rate)
   plus = rev(-cumsum(rev(bin)*rev(c(diff(rate), 0))))
   tax0 = tax(salary, bin, rate)
   if(max(salary) >= 61200){
