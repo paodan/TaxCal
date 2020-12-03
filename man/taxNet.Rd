@@ -6,14 +6,18 @@
 \usage{
 taxNet(
   salary,
-  bin = rev(c(0, 36, 144, 300, 420, 660, 960)) * 10^3,
-  rate = rev(c(0.03, 0.1, 0.2, 0.25, 0.3, 0.35, 0.45))
+  bin = c(0, 36, 144, 300, 420, 660, 960) * 10^3,
+  rate = c(0.03, 0.1, 0.2, 0.25, 0.3, 0.35, 0.45)
 )
 }
 \arguments{
 \item{salary}{annual gross salary in RMB.}
 
-\item{bin}{the rate for each taxing bin.}
+\item{bin}{the bins for taxing.
+The default is c(0, 36,000, 144,000, 300,000, 420,000, 660,000, 960,000).}
+
+\item{rate}{the rate for each taxing bin.
+The default is c(0.03, 0.1, 0.2, 0.25, 0.3, 0.35, 0.45).}
 }
 \value{
 a list, including annual gross salary, the tax you should pay, and the net anual salary.
