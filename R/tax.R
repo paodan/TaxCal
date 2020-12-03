@@ -13,14 +13,9 @@
 tax = function(salary,
                bin = c(    0,  36, 144,  300, 420,  660, 960) * 10^3,
                rate = c(0.03, 0.1, 0.2, 0.25, 0.3, 0.35, 0.45)){
-<<<<<<< HEAD
 
   bin_rev = rev(bin)
   rate_rev = rev(rate)
-=======
-  bin = rev(bin)
-  rate = rev(rate)
->>>>>>> 1e43be017d8e9bca2fa21239cc534bcf63b48e07
 
   # Quick deduction
   plus = rev(-cumsum(bin*rev(c(diff(rate_rev), 0))))
@@ -57,15 +52,9 @@ taxNet = function(salary,
                   bin = c(    0,  36, 144,  300, 420,  660, 960) * 10^3,
                   rate = c(0.03, 0.1, 0.2, 0.25, 0.3, 0.35, 0.45)){
 
-<<<<<<< HEAD
   bin_rev = rev(bin)
   rate_rev = rev(rate)
   plus = rev(-cumsum(bin*rev(c(diff(rate_rev), 0))))
-=======
-  bin = rev(bin)
-  rate = rev(rate)
-  plus = rev(-cumsum(rev(bin)*rev(c(diff(rate), 0))))
->>>>>>> 1e43be017d8e9bca2fa21239cc534bcf63b48e07
   tax0 = tax(salary, bin, rate)
   if(max(salary) >= 61200){
     x = seq(60000, by = 120, to = max(salary))
